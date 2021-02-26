@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <% if @user.errors.any? %>
+      <div class="error_explanation">
+        <h2><%= user.errors.count %>errors prohibited this user from being saved:</h2>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <%= render 'users/info', user: @user %>
+      <%= render 'recipes/form', recipe: @recipe %>
+
+    </div>
+
+    <div class="col-xs-8">
+      <h1>Recipes</h1>
+      <table class="table table-stried">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colpan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @recipes.each do |recipe| %>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %></td>
+            <td><%= link_to recipe.title, recipe_path(recipe) %></td>
+            <td><%= recipe.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

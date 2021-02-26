@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <h2>User info</h2>
+      <div>
+        <%= attachment_image_tag user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+      </div>
+      <table class="table table-striped">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "", edit_user_path(user), class: "btn btn-default glyphicon glyphicon-wrench btn-xs btn-block" %>
+    </div>

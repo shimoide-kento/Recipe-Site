@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= form_for(recipe, url: recipes_path, method: :post) do |f| %>
+      <h1>New Recipe</h1>
+
+      <% if recipe.errors.any? %>
+      <div class="error_explanation">
+        <h2><%= recipe.errors.count %>errors prohibited this book from being saved:</h2>
+        <ul>
+          <% recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+
+      <div class="field row">
+        <label for="recipe_title">Title</title>
+          <input class="col-xs-12 recipe_title" type="text" name="recipe[title]" id="recipe_title">
+      </div>
+
+      <div class="field row">
+        <label for="recipe_opinion">Opinion</label>
+        <textarea class="col-xs-12 recipe_body" name="recipe[body]" id="recipe_body"></textarea>
+      </div>
+
+      <input type="submit" name="commit" value="Create Recipe" class="btn btn-primary col-xs-12" date-disable-with="Create Recipe">
+      <% end %>
+    </div>
+  </div>
+</div>
